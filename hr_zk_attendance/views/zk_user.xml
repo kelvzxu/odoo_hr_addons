@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="zk_user_tree_view" model="ir.ui.view">
+        <field name="name">biometric.user.tree</field>
+        <field name="model">zk.machine.user</field>
+        <field name="arch" type="xml">
+            <tree string="Biometric User" create="false" delete="false" edit="false">
+                <field name="user_id"/>
+                <field name="name"/>
+                <field name="privilege"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="zk_user_form_view">
+        <field name="name">biometric.user.Form</field>
+        <field name="model">zk.machine.user</field>
+        <field name="type">form</field>
+        <field name="priority" eval="False"/>
+        <field name="arch" type="xml">
+            <form string="Appointment" create="false" delete="false" edit="false">
+                <header>
+                    
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group string="" style="margin:0px;margin-bottom:0px;">
+                        <group string="">
+                            <field name="device_id" string="attendance UID"/>
+                            <field name="user_id" string="User Id"/>
+                        </group>
+                        <group>
+                            <field name="group_id" string="Group Id"/>
+                            <field name="privilege" string="Privilege"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="zk_user_log_action" model="ir.actions.act_window">
+        <field name="name">Biometric User Log</field>
+        <field name="res_model">zk.machine.user</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_zk_user_view" name="Attendance User" action="zk_user_log_action" parent="zk_machine_menu"
+              sequence="2"/>
+</odoo>

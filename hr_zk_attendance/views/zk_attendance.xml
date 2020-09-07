@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="zk_attendance_log_view_search" model="ir.ui.view">
+            <field name="name">biometric.attendance.log.search.view</field>
+            <field name="model">zk.machine.attendance</field>
+            <field name="arch" type="xml">
+                <search string="Hr Attendance Search">
+                    <field name="employee_id"/>
+                    <field name="department_id" operator="child_of"/>
+                    <field name="punching_time"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="group_employee" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="zk_attendance_log_tree_view" model="ir.ui.view">
+            <field name="name">biometric.attendance.log.tree</field>
+            <field name="model">zk.machine.attendance</field>
+            <field name="arch" type="xml">
+                <tree string="Biometric Attendances Log" create="false" delete="false" edit="false">
+                    <field name="check_in_date"/>
+                    <field name="employee_id"/>
+                    <field name="punch_type"/>
+                    <field name="attendance_type"/>
+                    <field name="punching_time"/>
+                    <field name="address_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="zk_attendance_log_action" model="ir.actions.act_window">
+            <field name="name">Biometric Attendances Log</field>
+            <field name="res_model">zk.machine.attendance</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{
+            'search_default_group_employee': 1,
+            }
+            </field>
+        </record>
+
+        <menuitem id="menu_zk_attendance_view" name="Attendance log" action="zk_attendance_log_action" parent="zk_machine_menu"
+              sequence="3"/>
+    </data>
+</odoo>
