@@ -1,5 +1,5 @@
 {
-    'name'                  : 'Biometric Device Integration',
+    'name'                  : 'Biometric Device Integrations',
     'version'               : '1.0',
     'summary'               : """Integrating Biometric Device With HR Attendance (Face + Thumb)""",
     'description'           : 'This module integrates Odoo with the biometric device. (Check below or README.md for compatible devices.)',
